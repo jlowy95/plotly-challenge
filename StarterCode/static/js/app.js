@@ -126,17 +126,34 @@ function plotBubble(idx, data){
 }
 
 function plotGauge(idx, data){
-
+    var gaugeVal = data.metadata[idx].wfreq;
 
     var gauge = [
         {
           domain: { x: [0, 1], y: [0, 1] },
-          value: 4,
+          value: gaugeVal,
           title: { text: "Scrubs per Week" },
           type: "indicator",
           mode: "gauge",
         //   delta: { reference: 380 },
-          gauge: {
+          gauge: {   
+            bar: {
+                color: "lightgrey",
+                thickness: 0.3
+                // color: function(gaugeVal){
+                //     if (gaugeVal > 8){
+                //         return "green";
+                //     }else if (gaugeVal > 6){
+                //         return "yellowgreen";
+                //     }else if (gaugeVal > 4){
+                //         return "yellow";
+                //     }else if (gaugeVal > 2){
+                //         return "orange";
+                //     }else{
+                //         return "red";
+                //     }
+                //}
+            },
             axis: { range: [null, 9] },
             steps: [
               { range: [0, 2], color: "red" },
